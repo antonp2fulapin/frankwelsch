@@ -9,8 +9,14 @@ const CONTENT_DIRS: Record<ContentType, string> = {
   lexikon: "lexikon",
   personen: "personen",
   leistungen: "leistungen",
-  standorte: "standorte"
+  standorte: "standorte",
+
+  // ✅ aliases required because ContentType includes them
+  service: "leistungen",
+  person: "personen",
+  location: "standorte"
 };
+
 
 const readEntry = (type: ContentType, filePath: string): ContentWithType => {
   const raw = fs.readFileSync(filePath, "utf-8");
