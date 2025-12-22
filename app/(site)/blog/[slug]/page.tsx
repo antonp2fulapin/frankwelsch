@@ -23,18 +23,13 @@ export const generateStaticParams = async () =>
   getAllSlugs("blog").map((slug) => ({ slug }));
 
 interface PageProps {
-  params: Promise<{
-    slug: string;
-  }>;
+  params: Promise<{ slug: string }>;
 }
 
 export const generateMetadata = async ({ params }: PageProps) => {
   const { slug } = await params;
-
   const entry = getContentBySlug("blog", slug);
-  if (!entry) {
-    return {};
-  }
+  if (!entry) return {};
 
   return buildMetadata({
     title: entry.title,
@@ -45,11 +40,8 @@ export const generateMetadata = async ({ params }: PageProps) => {
 
 export default async function BlogArticlePage({ params }: PageProps) {
   const { slug } = await params;
-
   const entry = getContentBySlug("blog", slug);
-  if (!entry) {
-    notFound();
-  }
+  if (!entry) notFound();
 
   const glossaryTerms = getGlossaryTerms();
   const related = getRelatedContent(entry, getAllContent());
@@ -59,11 +51,17 @@ export default async function BlogArticlePage({ params }: PageProps) {
     ? entry.canonical
     : `${siteUrl}${entry.canonical}`;
 
-  const schemas = [
+  // ✅ FIX: explicitly typed JSON-LD array
+  const schemas: Record<string, any>[] = [];
+
+  schemas.push(
     buildBreadcrumbSchema([
       { name: "Startseite", url: siteUrl },
       { name: entry.title, url: canonical }
-    ]),
+    ])
+  );
+
+  schemas.push(
     buildArticleSchema({
       headline: entry.title,
       description: entry.excerpt,
@@ -71,7 +69,7 @@ export default async function BlogArticlePage({ params }: PageProps) {
       datePublished: entry.datePublished,
       dateModified: entry.dateModified
     })
-  ];
+  );
 
   if (entry.faq?.length) {
     schemas.push(buildFAQSchema(entry.faq));
@@ -95,11 +93,9 @@ export default async function BlogArticlePage({ params }: PageProps) {
         <h1 className="text-4xl font-semibold text-slate-900">
           {entry.title}
         </h1>
-
         <p className="text-lg text-slate-600">
           {entry.excerpt}
         </p>
-
         <div className="text-sm text-slate-500">
           <time dateTime={entry.datePublished}>
             Veröffentlicht am {entry.datePublished}
