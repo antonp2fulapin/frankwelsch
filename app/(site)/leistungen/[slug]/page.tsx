@@ -12,6 +12,7 @@ import {
 } from "@/lib/content";
 import { buildMetadata, getSiteUrl } from "@/lib/seo";
 import { buildBreadcrumbSchema, buildFAQSchema, buildServiceSchema } from "@/lib/schema";
+import { Badge } from "@/components/ui/Badge";
 
 export const revalidate = 300;
 
@@ -72,7 +73,7 @@ export default async function LeistungenPage({ params }: PageProps) {
   }
 
   return (
-    <div className="space-y-8">
+    <div className="space-y-10">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(schemas) }}
@@ -85,9 +86,14 @@ export default async function LeistungenPage({ params }: PageProps) {
         ]}
       />
 
-      <header className="space-y-3">
-        <h1 className="text-4xl font-semibold text-slate-900">{entry.title}</h1>
-        <p className="text-lg text-slate-600">{entry.excerpt}</p>
+      <header className="space-y-4">
+        <Badge>Leistung</Badge>
+        <div className="space-y-3">
+          <h1 className="text-4xl font-semibold tracking-tight text-slate-900 md:text-5xl">
+            {entry.title}
+          </h1>
+          <p className="text-lg text-slate-600 md:text-xl">{entry.excerpt}</p>
+        </div>
       </header>
 
       <ArticleRenderer markdown={entry.markdown} glossaryTerms={glossaryTerms} />

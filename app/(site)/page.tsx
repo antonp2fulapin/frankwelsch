@@ -2,6 +2,10 @@ import Link from "next/link";
 import { buildMetadata } from "@/lib/seo";
 import { getAllContentByType } from "@/lib/content";
 import { buildOrganizationSchema, buildWebSiteSchema } from "@/lib/schema";
+import { ButtonLink } from "@/components/ui/Button";
+import { Card } from "@/components/ui/Card";
+import { Badge } from "@/components/ui/Badge";
+import { SectionHeader } from "@/components/ui/SectionHeader";
 
 export const revalidate = 300;
 
@@ -19,53 +23,104 @@ export default async function HomePage() {
   const schemas = [buildWebSiteSchema(), buildOrganizationSchema()];
 
   return (
-    <div className="space-y-12">
+    <div className="space-y-14">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(schemas) }}
       />
-      <section className="space-y-4">
-        <h1 className="text-4xl font-semibold text-slate-900">
-          Insolvenzrecht & Sanierung kompakt
-        </h1>
-        <p className="text-lg text-slate-600">
-          Orientierung für Unternehmen, Geschäftsführer und Gläubiger mit fundierten Einblicken in
-          Verfahren, Pflichten und Chancen der Restrukturierung.
-        </p>
+
+      <section className="rounded-3xl border border-slate-200/70 bg-white p-8 shadow-sm shadow-slate-200/40 md:p-12">
+        <div className="grid gap-10 lg:grid-cols-[1.4fr_1fr] lg:items-center">
+          <div className="space-y-6">
+            <Badge>Insolvenzrecht &amp; Restrukturierung</Badge>
+            <div className="space-y-4">
+              <h1 className="text-4xl font-semibold tracking-tight text-slate-900 md:text-5xl">
+                Insolvenzrecht &amp; Sanierung kompakt
+              </h1>
+              <p className="text-lg text-slate-600 md:text-xl">
+                Orientierung für Unternehmen, Geschäftsführer und Gläubiger mit fundierten Einblicken
+                in Verfahren, Pflichten und Chancen der Restrukturierung.
+              </p>
+            </div>
+            <div className="flex flex-wrap gap-3">
+              <ButtonLink href="/leistungen">Unsere Leistungen</ButtonLink>
+              <ButtonLink href="/lexikon" variant="secondary">
+                Glossar ansehen
+              </ButtonLink>
+            </div>
+          </div>
+          <div className="space-y-6">
+            <Card className="space-y-4">
+              <h2 className="text-lg font-semibold text-slate-900">Schwerpunkte</h2>
+              <ul className="space-y-3 text-sm text-slate-600">
+                <li>Strategische Begleitung bei Insolvenzanträgen und Schutzschirmverfahren.</li>
+                <li>Kommunikation mit Gläubigerausschüssen, Banken und Stakeholdern.</li>
+                <li>Restrukturierungskonzepte für nachhaltige Fortführungslösungen.</li>
+              </ul>
+            </Card>
+            <div className="grid gap-4 sm:grid-cols-2">
+              {[
+                { label: "Praxisleitfäden", value: "40+" },
+                { label: "Glossar-Einträge", value: "100+" },
+                { label: "Fachautor:innen", value: "8" },
+                { label: "Aktualisierung", value: "Monatlich" }
+              ].map((item) => (
+                <div
+                  key={item.label}
+                  className="rounded-2xl border border-slate-200/70 bg-slate-50 px-4 py-3 text-sm"
+                >
+                  <div className="text-lg font-semibold text-slate-900">{item.value}</div>
+                  <div className="text-slate-600">{item.label}</div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
       </section>
 
-      <section className="space-y-4">
-        <div className="flex items-center justify-between">
-          <h2 className="text-2xl font-semibold text-slate-900">Aktuelle Beiträge</h2>
-          <Link href="/blog/insolvenz-plan" className="text-sm text-blue-700">
-            Alle Blogartikel
-          </Link>
-        </div>
-        <div className="grid gap-4 md:grid-cols-3">
+      <section className="space-y-8">
+        <SectionHeader
+          title="Aktuelle Beiträge"
+          subtitle="Kuratiertes Wissen zu Insolvenzantrag, Haftung und Sanierungsoptionen."
+          actions={<ButtonLink href="/blog" variant="secondary">Alle Blogartikel</ButtonLink>}
+        />
+        <div className="grid gap-6 md:grid-cols-3">
           {latestBlog.map((entry) => (
-            <article key={entry.slug} className="rounded-xl border border-slate-200 p-4">
-              <h3 className="text-lg font-semibold text-slate-900">
-                <Link href={`/blog/${entry.slug}`}>{entry.title}</Link>
-              </h3>
-              <p className="mt-2 text-sm text-slate-600">{entry.excerpt}</p>
-            </article>
+            <Card key={entry.slug} className="flex h-full flex-col justify-between">
+              <div className="space-y-3">
+                <div className="text-xs font-semibold uppercase tracking-wide text-slate-500">Blog</div>
+                <h3 className="text-lg font-semibold text-slate-900">
+                  <Link href={`/blog/${entry.slug}`} className="hover:underline">
+                    {entry.title}
+                  </Link>
+                </h3>
+                <p className="text-sm text-slate-600">{entry.excerpt}</p>
+              </div>
+              <div className="pt-4 text-sm font-medium text-slate-700">
+                Weiterlesen →
+              </div>
+            </Card>
           ))}
         </div>
       </section>
 
-      <section className="space-y-4">
-        <div className="flex items-center justify-between">
-          <h2 className="text-2xl font-semibold text-slate-900">Lexikon</h2>
-        </div>
-        <div className="grid gap-3 md:grid-cols-3">
+      <section className="space-y-8">
+        <SectionHeader
+          title="Lexikon"
+          subtitle="Begriffe aus der Insolvenzordnung klar und verständlich erklärt."
+          actions={<ButtonLink href="/lexikon" variant="secondary">Zum Lexikon</ButtonLink>}
+        />
+        <div className="grid gap-4 md:grid-cols-3">
           {lexikonEntries.map((entry) => (
-            <Link
-              key={entry.slug}
-              href={`/lexikon/${entry.slug}`}
-              className="rounded-lg border border-slate-200 p-3 text-sm text-slate-700 hover:border-blue-300"
-            >
-              {entry.title}
-            </Link>
+            <Card key={entry.slug} className="flex items-center justify-between">
+              <Link
+                href={`/lexikon/${entry.slug}`}
+                className="text-sm font-semibold text-slate-700 hover:text-slate-900"
+              >
+                {entry.title}
+              </Link>
+              <span className="text-xs text-slate-400">→</span>
+            </Card>
           ))}
         </div>
       </section>

@@ -14,6 +14,8 @@ import {
 } from "@/lib/content";
 import { buildMetadata, getSiteUrl } from "@/lib/seo";
 import { buildArticleSchema, buildBreadcrumbSchema, buildFAQSchema } from "@/lib/schema";
+import { Badge } from "@/components/ui/Badge";
+import { Card } from "@/components/ui/Card";
 
 export const revalidate = 300;
 
@@ -77,7 +79,7 @@ export default async function LexikonTermPage({ params }: PageProps) {
   }
 
   return (
-    <div className="space-y-8">
+    <div className="space-y-10">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(schemas) }}
@@ -90,9 +92,14 @@ export default async function LexikonTermPage({ params }: PageProps) {
         ]}
       />
 
-      <header className="space-y-3">
-        <h1 className="text-4xl font-semibold text-slate-900">{entry.title}</h1>
-        <p className="text-lg text-slate-600">{entry.excerpt}</p>
+      <header className="space-y-4">
+        <Badge>Lexikon</Badge>
+        <div className="space-y-3">
+          <h1 className="text-4xl font-semibold tracking-tight text-slate-900 md:text-5xl">
+            {entry.title}
+          </h1>
+          <p className="text-lg text-slate-600 md:text-xl">{entry.excerpt}</p>
+        </div>
       </header>
 
       <ArticleRenderer markdown={entry.markdown} glossaryTerms={glossaryTerms} />
@@ -100,19 +107,22 @@ export default async function LexikonTermPage({ params }: PageProps) {
       {entry.faq?.length ? <FAQ items={entry.faq} /> : null}
 
       {backlinks.length ? (
-        <section className="space-y-3">
-          <h2 className="text-2xl font-semibold text-slate-900">
+        <section className="space-y-4">
+          <h2 className="text-2xl font-semibold text-slate-900 md:text-3xl">
             Verweise aus anderen Artikeln
           </h2>
-          <ul className="list-disc space-y-2 pl-5 text-slate-700">
+          <ul className="grid gap-3 md:grid-cols-2">
             {backlinks.map((item) => (
               <li key={`${item.type}-${item.slug}`}>
-                <Link
-                  href={`/${item.type}/${item.slug}`}
-                  className="text-blue-700 hover:text-blue-800"
-                >
-                  {item.title}
-                </Link>
+                <Card className="flex items-center justify-between">
+                  <Link
+                    href={`/${item.type}/${item.slug}`}
+                    className="text-sm font-semibold text-slate-700 hover:text-slate-900"
+                  >
+                    {item.title}
+                  </Link>
+                  <span className="text-xs text-slate-400">→</span>
+                </Card>
               </li>
             ))}
           </ul>
