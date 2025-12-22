@@ -1,88 +1,95 @@
 /**
  * Shared type definitions for content used throughout the application.
  *
- * Each content entity extends a common base with metadata fields used for
- * SEO and routing. Additional fields capture the unique aspects of
- * different content types (e.g. BlogArticle, Person, Service).
+ * Goal: keep types strict enough to be useful, but flexible enough that
+ * content-driven pages/components don't break the build when schemas differ.
  */
 
+/** FAQ item used in content frontmatter/data. */
 export interface FaqEntry {
   question: string;
   answer: string;
 }
 
 /**
- * ✅ Backwards-compatible alias (your components import this name)
+ * ✅ Backwards-compatible alias (some components import this old name)
  */
 export type ContentFaq = FaqEntry;
 
+/**
+ * ✅ ContentType used by lib/content functions (getAllSlugs, getContentBySlug, etc.)
+ *
+ * Include BOTH your route segments (German) and any legacy internal names
+ * that may still exist in older code.
+ */
+export type ContentType =
+  | "blog"
+  | "leistungen"
+  | "lexikon"
+  | "personen"
+  | "standorte"
+  // legacy/internal fallbacks (safe to keep)
+  | "service"
+  | "person"
+  | "location";
+
+/** Common fields present on every content entry. */
 export interface BaseContent {
-  /** Unique slug used for routing. */
   slug: string;
-  /** Title of the page or entry. */
   title: string;
-  /** Short summary used in previews and listings. */
   excerpt: string;
-  /** ISO 8601 publication date. */
   datePublished: string;
-  /** ISO 8601 modification date; falls back to datePublished if omitted. */
   dateModified: string;
-  /** Content language, e.g. "de-DE". */
   language: string;
-  /** Keywords associated with the content for SEO and internal linking. */
   keywords: string[];
-  /** Canonical URL path (without domain). */
   canonical: string;
-  /** Optional FAQ entries attached to the content. */
   faq?: FaqEntry[];
-  /** Optional list of internal link targets. */
   internalLinks?: string[];
-  /** Markdown string containing the body of the content. */
   markdown: string;
 }
 
 /**
- * ✅ Backwards-compatible "minimal content" type used by components like RelatedContent
- * Some parts of the app only need: { type, slug, title, excerpt } etc.
- *
- * IMPORTANT:
- * We intentionally keep `type: string` so that TS does NOT force you to list
- * every possible type key in label maps, and so that any future content type
- * won't break the build.
+ * ✅ Backwards-compatible “minimal” type used in components like RelatedContent.
+ * Keep type as string so future content types won't break builds.
  */
 export type ContentWithType = BaseContent & {
   type: string;
 };
 
+/**
+ * More specific entry types (keep extra fields optional so content parsing
+ * doesn't fail type-checking if a field is absent).
+ */
 export interface BlogArticle extends BaseContent {
   type: "blog";
 }
 
+export interface Service extends BaseContent {
+  type: "leistungen" | "service";
+  serviceName?: string;
+  overview?: string;
+  relatedServices?: string[];
+}
+
+export interface LexikonEntry extends BaseContent {
+  type: "lexikon";
+  term?: string;
+  definition?: string;
+}
+
 export interface Person extends BaseContent {
-  type: "person";
-  /** Full name of the person. */
-  name: string;
-  /** Academic or professional titles (e.g. "Dr."). */
-  titles: string[];
-  /** Roles such as "Rechtsanwalt" or "Insolvenzverwalter". */
-  roles: string[];
-  /** Areas of specialization. */
-  specialties: string[];
-  /** Languages the person works in. */
-  languages: string[];
-  /** Detailed biography in markdown or HTML. */
-  biography: string;
-  /** Chronological career timeline entries. */
-  careerTimeline: { year: string; description: string }[];
-  /** Professional memberships and associations. */
-  memberships: string[];
-  /** Published works and lectures. */
-  publications: { title: string; year: string; outlet?: string }[];
-  /** Offices or regions served. */
-  locations: string[];
-  /** Optional URL or path to a portrait photo. */
+  type: "personen" | "person";
+  name?: string;
+  titles?: string[];
+  roles?: string[];
+  specialties?: string[];
+  languages?: string[];
+  biography?: string;
+  careerTimeline?: { year: string; description: string }[];
+  memberships?: string[];
+  publications?: { title: string; year: string; outlet?: string }[];
+  locations?: string[];
   photo?: string;
-  /** Contact information. */
   contact?: {
     email?: string;
     phone?: string;
@@ -90,43 +97,22 @@ export interface Person extends BaseContent {
   };
 }
 
-export interface Service extends BaseContent {
-  type: "service";
-  /** Name of the legal service provided. */
-  serviceName: string;
-  /** Detailed description of the service. */
-  overview: string;
-  /** Optional list of related services or resources. */
-  relatedServices?: string[];
-}
-
-export interface LexikonEntry extends BaseContent {
-  type: "lexikon";
-  /** The lexicon term being defined. */
-  term: string;
-  /** Optional definition or alternative description. */
-  definition?: string;
-}
-
 export interface Location extends BaseContent {
-  type: "location";
-  /** Physical street address. */
+  type: "standorte" | "location";
   address?: string;
-  /** City where the office is located. */
   city?: string;
-  /** Region or state. */
   region?: string;
-  /** Country. */
   country?: string;
-  /** Contact phone number. */
   phone?: string;
-  /** Contact email address. */
   email?: string;
-  /** URL for a map or directions. */
   mapUrl?: string;
 }
 
 /**
- * Optional helper union (safe to export; doesn’t break anything)
+ * ✅ This is what your lib/content/index.ts expects to import.
+ * It represents "a piece of content" of any supported type.
  */
-export type AnyContent = BlogArticle | Person | Service | LexikonEntry | Location | ContentWithType;
+export type ContentEntry = BlogArticle | Service | LexikonEntry | Person | Location;
+
+/** Optional convenience alias */
+export type AnyContent = ContentEntry;
