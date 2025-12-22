@@ -13,18 +13,26 @@ import {
   getRelatedContent
 } from "@/lib/content";
 import { buildMetadata, getSiteUrl } from "@/lib/seo";
-import { buildArticleSchema, buildBreadcrumbSchema, buildFAQSchema } from "@/lib/schema";
+import {
+  buildArticleSchema,
+  buildBreadcrumbSchema,
+  buildFAQSchema
+} from "@/lib/schema";
 
 export const revalidate = 300;
 
 export const generateStaticParams = async () =>
   getAllSlugs("lexikon").map((term) => ({ term }));
 
-export const generateMetadata = async ({ params }: { params: { term: string } }) => {
-  const entry = getContentBySlug("lexikon", params.term);
-  if (!entry) {
-    return {};
-  }
+interface PageProps {
+  params: Promise<{ term: string }>;
+}
+
+export const generateMetadata = async ({ params }: PageProps) => {
+  const { term } = await params;
+  const entry = getContentBySlug("lexikon", term);
+  if (!entry) return {};
+
   return buildMetadata({
     title: entry.title,
     description: entry.excerpt,
@@ -32,17 +40,18 @@ export const generateMetadata = async ({ params }: { params: { term: string } })
   });
 };
 
-export default async function LexikonTermPage({ params }: { params: { term: string } }) {
-  const entry = getContentBySlug("lexikon", params.term);
-  if (!entry) {
-    notFound();
-  }
+export default async function LexikonTermPage({ params }: PageProps) {
+  const { term } = await params;
+  const entry = getContentBySlug("lexikon", term);
+  if (!entry) notFound();
 
   const glossaryTerms = getGlossaryTerms();
   const related = getRelatedContent(entry, getAllContent());
   const backlinks = getGlossaryBacklinks(entry.title);
   const siteUrl = getSiteUrl();
-  const canonical = entry.canonical.startsWith("http") ? entry.canonical : `${siteUrl}${entry.canonical}`;
+  const canonical = entry.canonical.startsWith("http")
+    ? entry.canonical
+    : `${siteUrl}${entry.canonical}`;
 
   const schemas = [
     buildBreadcrumbSchema([
@@ -68,18 +77,35 @@ export default async function LexikonTermPage({ params }: { params: { term: stri
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(schemas) }}
       />
+
       <Breadcrumbs
-        items={[{ label: "Startseite", href: "/" }, { label: entry.title, href: `/lexikon/${entry.slug}` }]}
+        items={[
+          { label: "Startseite", href: "/" },
+          { label: entry.title, href: `/lexikon/${entry.slug}` }
+        ]}
       />
+
       <header className="space-y-3">
-        <h1 className="text-4xl font-semibold text-slate-900">{entry.title}</h1>
-        <p className="text-lg text-slate-600">{entry.excerpt}</p>
+        <h1 className="text-4xl font-semibold text-slate-900">
+          {entry.title}
+        </h1>
+        <p className="text-lg text-slate-600">
+          {entry.excerpt}
+        </p>
       </header>
-      <ArticleRenderer markdown={entry.markdown} glossaryTerms={glossaryTerms} />
+
+      <ArticleRenderer
+        markdown={entry.markdown}
+        glossaryTerms={glossaryTerms}
+      />
+
       {entry.faq?.length ? <FAQ items={entry.faq} /> : null}
+
       {backlinks.length ? (
         <section className="space-y-3">
-          <h2 className="text-2xl font-semibold text-slate-900">Verweise aus anderen Artikeln</h2>
+          <h2 className="text-2xl font-semibold text-slate-900">
+            Verweise aus anderen Artikeln
+          </h2>
           <ul className="list-disc space-y-2 pl-5 text-slate-700">
             {backlinks.map((item) => (
               <li key={`${item.type}-${item.slug}`}>
@@ -94,6 +120,7 @@ export default async function LexikonTermPage({ params }: { params: { term: stri
           </ul>
         </section>
       ) : null}
+
       <RelatedContent items={related} />
     </div>
   );
