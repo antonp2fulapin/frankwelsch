@@ -11,6 +11,12 @@ export interface FaqEntry {
   answer: string;
 }
 
+/**
+ * ✅ Backwards-compatible alias (fixes your build error)
+ * Some components/imports expect `ContentFaq`.
+ */
+export type ContentFaq = FaqEntry;
+
 export interface BaseContent {
   /** Unique slug used for routing. */
   slug: string;
@@ -37,11 +43,11 @@ export interface BaseContent {
 }
 
 export interface BlogArticle extends BaseContent {
-  type: 'blog';
+  type: "blog";
 }
 
 export interface Person extends BaseContent {
-  type: 'person';
+  type: "person";
   /** Full name of the person. */
   name: string;
   /** Academic or professional titles (e.g. "Dr."). */
@@ -73,7 +79,7 @@ export interface Person extends BaseContent {
 }
 
 export interface Service extends BaseContent {
-  type: 'service';
+  type: "service";
   /** Name of the legal service provided. */
   serviceName: string;
   /** Detailed description of the service. */
@@ -83,7 +89,7 @@ export interface Service extends BaseContent {
 }
 
 export interface LexikonEntry extends BaseContent {
-  type: 'lexikon';
+  type: "lexikon";
   /** The lexicon term being defined. */
   term: string;
   /** Optional definition or alternative description. */
@@ -91,7 +97,7 @@ export interface LexikonEntry extends BaseContent {
 }
 
 export interface Location extends BaseContent {
-  type: 'location';
+  type: "location";
   /** Physical street address. */
   address?: string;
   /** City where the office is located. */
