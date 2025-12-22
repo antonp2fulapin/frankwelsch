@@ -2,7 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Optional: minimal global resets only */
-html, body {
-  height: 100%;
+/* Optional: your custom class used by the glossary linker */
+.glossary-link {
+  text-decoration: underline;
+  text-decoration-style: dotted;
+  text-underline-offset: 2px;
 }
