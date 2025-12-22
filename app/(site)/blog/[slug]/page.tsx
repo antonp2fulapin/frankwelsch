@@ -11,11 +11,7 @@ import {
   getRelatedContent
 } from "@/lib/content";
 import { buildMetadata, getSiteUrl } from "@/lib/seo";
-import {
-  buildArticleSchema,
-  buildBreadcrumbSchema,
-  buildFAQSchema
-} from "@/lib/schema";
+import { buildArticleSchema, buildBreadcrumbSchema, buildFAQSchema } from "@/lib/schema";
 
 export const revalidate = 300;
 
@@ -28,6 +24,7 @@ interface PageProps {
 
 export const generateMetadata = async ({ params }: PageProps) => {
   const { slug } = await params;
+
   const entry = getContentBySlug("blog", slug);
   if (!entry) return {};
 
@@ -40,6 +37,7 @@ export const generateMetadata = async ({ params }: PageProps) => {
 
 export default async function BlogArticlePage({ params }: PageProps) {
   const { slug } = await params;
+
   const entry = getContentBySlug("blog", slug);
   if (!entry) notFound();
 
@@ -51,8 +49,8 @@ export default async function BlogArticlePage({ params }: PageProps) {
     ? entry.canonical
     : `${siteUrl}${entry.canonical}`;
 
-  // ✅ FIX: explicitly typed JSON-LD array
-  const schemas: Record<string, any>[] = [];
+  // ✅ IMPORTANT: heterogeneous JSON-LD array (fixes TS push errors)
+  const schemas: unknown[] = [];
 
   schemas.push(
     buildBreadcrumbSchema([
@@ -90,27 +88,16 @@ export default async function BlogArticlePage({ params }: PageProps) {
       />
 
       <header className="space-y-3">
-        <h1 className="text-4xl font-semibold text-slate-900">
-          {entry.title}
-        </h1>
-        <p className="text-lg text-slate-600">
-          {entry.excerpt}
-        </p>
+        <h1 className="text-4xl font-semibold text-slate-900">{entry.title}</h1>
+        <p className="text-lg text-slate-600">{entry.excerpt}</p>
         <div className="text-sm text-slate-500">
-          <time dateTime={entry.datePublished}>
-            Veröffentlicht am {entry.datePublished}
-          </time>
+          <time dateTime={entry.datePublished}>Veröffentlicht am {entry.datePublished}</time>
           <span className="mx-2">•</span>
-          <time dateTime={entry.dateModified}>
-            Aktualisiert am {entry.dateModified}
-          </time>
+          <time dateTime={entry.dateModified}>Aktualisiert am {entry.dateModified}</time>
         </div>
       </header>
 
-      <ArticleRenderer
-        markdown={entry.markdown}
-        glossaryTerms={glossaryTerms}
-      />
+      <ArticleRenderer markdown={entry.markdown} glossaryTerms={glossaryTerms} />
 
       {entry.faq?.length ? <FAQ items={entry.faq} /> : null}
 
