@@ -2,18 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  color-scheme: light;
-}
-
-body {
-  @apply bg-white text-slate-900 antialiased;
-}
-
-.prose a {
-  @apply text-blue-700 underline decoration-blue-300 underline-offset-4;
-}
-
-.prose a:hover {
-  @apply text-blue-800 decoration-blue-500;
+/* Optional: minimal global resets only */
+html, body {
+  height: 100%;
 }
