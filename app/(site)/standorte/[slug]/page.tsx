@@ -11,11 +11,7 @@ import {
   getRelatedContent
 } from "@/lib/content";
 import { buildMetadata, getSiteUrl } from "@/lib/seo";
-import {
-  buildBreadcrumbSchema,
-  buildFAQSchema,
-  buildOrganizationSchema
-} from "@/lib/schema";
+import { buildBreadcrumbSchema, buildFAQSchema, buildOrganizationSchema } from "@/lib/schema";
 
 export const revalidate = 300;
 
@@ -28,6 +24,7 @@ interface PageProps {
 
 export const generateMetadata = async ({ params }: PageProps) => {
   const { slug } = await params;
+
   const entry = getContentBySlug("standorte", slug);
   if (!entry) return {};
 
@@ -40,23 +37,29 @@ export const generateMetadata = async ({ params }: PageProps) => {
 
 export default async function StandortePage({ params }: PageProps) {
   const { slug } = await params;
+
   const entry = getContentBySlug("standorte", slug);
   if (!entry) notFound();
 
   const glossaryTerms = getGlossaryTerms();
   const related = getRelatedContent(entry, getAllContent());
   const siteUrl = getSiteUrl();
+
   const canonical = entry.canonical.startsWith("http")
     ? entry.canonical
     : `${siteUrl}${entry.canonical}`;
 
-  const schemas = [
+  // ✅ IMPORTANT: fixes TS error when pushing FAQ schema
+  const schemas: unknown[] = [];
+
+  schemas.push(
     buildBreadcrumbSchema([
       { name: "Startseite", url: siteUrl },
       { name: entry.title, url: canonical }
-    ]),
-    buildOrganizationSchema()
-  ];
+    ])
+  );
+
+  schemas.push(buildOrganizationSchema());
 
   if (entry.faq?.length) {
     schemas.push(buildFAQSchema(entry.faq));
@@ -77,18 +80,11 @@ export default async function StandortePage({ params }: PageProps) {
       />
 
       <header className="space-y-3">
-        <h1 className="text-4xl font-semibold text-slate-900">
-          {entry.title}
-        </h1>
-        <p className="text-lg text-slate-600">
-          {entry.excerpt}
-        </p>
+        <h1 className="text-4xl font-semibold text-slate-900">{entry.title}</h1>
+        <p className="text-lg text-slate-600">{entry.excerpt}</p>
       </header>
 
-      <ArticleRenderer
-        markdown={entry.markdown}
-        glossaryTerms={glossaryTerms}
-      />
+      <ArticleRenderer markdown={entry.markdown} glossaryTerms={glossaryTerms} />
 
       {entry.faq?.length ? <FAQ items={entry.faq} /> : null}
 
