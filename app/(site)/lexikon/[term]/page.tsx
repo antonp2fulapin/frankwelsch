@@ -13,11 +13,7 @@ import {
   getRelatedContent
 } from "@/lib/content";
 import { buildMetadata, getSiteUrl } from "@/lib/seo";
-import {
-  buildArticleSchema,
-  buildBreadcrumbSchema,
-  buildFAQSchema
-} from "@/lib/schema";
+import { buildArticleSchema, buildBreadcrumbSchema, buildFAQSchema } from "@/lib/schema";
 
 export const revalidate = 300;
 
@@ -30,6 +26,7 @@ interface PageProps {
 
 export const generateMetadata = async ({ params }: PageProps) => {
   const { term } = await params;
+
   const entry = getContentBySlug("lexikon", term);
   if (!entry) return {};
 
@@ -42,6 +39,7 @@ export const generateMetadata = async ({ params }: PageProps) => {
 
 export default async function LexikonTermPage({ params }: PageProps) {
   const { term } = await params;
+
   const entry = getContentBySlug("lexikon", term);
   if (!entry) notFound();
 
@@ -49,15 +47,22 @@ export default async function LexikonTermPage({ params }: PageProps) {
   const related = getRelatedContent(entry, getAllContent());
   const backlinks = getGlossaryBacklinks(entry.title);
   const siteUrl = getSiteUrl();
+
   const canonical = entry.canonical.startsWith("http")
     ? entry.canonical
     : `${siteUrl}${entry.canonical}`;
 
-  const schemas = [
+  // ✅ IMPORTANT: fixes TS error when pushing FAQ schema
+  const schemas: unknown[] = [];
+
+  schemas.push(
     buildBreadcrumbSchema([
       { name: "Startseite", url: siteUrl },
       { name: entry.title, url: canonical }
-    ]),
+    ])
+  );
+
+  schemas.push(
     buildArticleSchema({
       headline: entry.title,
       description: entry.excerpt,
@@ -65,7 +70,7 @@ export default async function LexikonTermPage({ params }: PageProps) {
       datePublished: entry.datePublished,
       dateModified: entry.dateModified
     })
-  ];
+  );
 
   if (entry.faq?.length) {
     schemas.push(buildFAQSchema(entry.faq));
@@ -86,18 +91,11 @@ export default async function LexikonTermPage({ params }: PageProps) {
       />
 
       <header className="space-y-3">
-        <h1 className="text-4xl font-semibold text-slate-900">
-          {entry.title}
-        </h1>
-        <p className="text-lg text-slate-600">
-          {entry.excerpt}
-        </p>
+        <h1 className="text-4xl font-semibold text-slate-900">{entry.title}</h1>
+        <p className="text-lg text-slate-600">{entry.excerpt}</p>
       </header>
 
-      <ArticleRenderer
-        markdown={entry.markdown}
-        glossaryTerms={glossaryTerms}
-      />
+      <ArticleRenderer markdown={entry.markdown} glossaryTerms={glossaryTerms} />
 
       {entry.faq?.length ? <FAQ items={entry.faq} /> : null}
 
