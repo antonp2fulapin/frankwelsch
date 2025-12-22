@@ -113,7 +113,15 @@ function normalizeDate(value: string): string {
   return date.toISOString();
 }
 
-async function readJsonFile<T>(filePath: string, schema: z.ZodSchema<T>): Promise<T> {
+type ContentWithDates = {
+  datePublished: string;
+  dateModified?: string;
+};
+
+async function readJsonFile<T extends ContentWithDates>(
+  filePath: string,
+  schema: z.ZodType<T>,
+): Promise<T> {
   const raw = await fs.readFile(filePath, 'utf-8');
   let parsed: unknown;
   try {
@@ -125,13 +133,17 @@ async function readJsonFile<T>(filePath: string, schema: z.ZodSchema<T>): Promis
   const data = schema.parse(parsed);
 
   // Normalize dates
-  const normalized: any = { ...data };
-  normalized.datePublished = normalizeDate(data.datePublished);
-  normalized.dateModified = normalizeDate(data.dateModified ?? data.datePublished);
-  return normalized as T;
+  return {
+    ...data,
+    datePublished: normalizeDate(data.datePublished),
+    dateModified: normalizeDate(data.dateModified ?? data.datePublished),
+  };
 }
 
-async function loadDirectory<T>(directory: string, schema: z.ZodSchema<T>): Promise<T[]> {
+async function loadDirectory<T extends ContentWithDates>(
+  directory: string,
+  schema: z.ZodType<T>,
+): Promise<T[]> {
   const dirPath = path.join(CONTENT_ROOT, directory);
   let entries: string[];
   try {
@@ -189,10 +201,10 @@ export async function loadLocations(): Promise<Location[]> {
  * Generic loader to fetch a single item by slug from a given content type.
  * Returns `null` if no matching file is found.
  */
-export async function loadBySlug<T>(
+export async function loadBySlug<T extends ContentWithDates>(
   directory: string,
   slug: string,
-  schema: z.ZodSchema<T>,
+  schema: z.ZodType<T>,
 ): Promise<T | null> {
   const filePath = path.join(CONTENT_ROOT, directory, `${slug}.json`);
   try {
