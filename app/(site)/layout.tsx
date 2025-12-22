@@ -1,39 +1,49 @@
-import type { Metadata } from "next";
-import { Inter } from "next/font/google";
-import Link from "next/link";
-import "@/styles/globals.css";
-import { SITE_DESCRIPTION, SITE_NAME } from "@/lib/seo";
+import '../../styles/globals.css';
+import type { Metadata } from 'next';
+import { ReactNode } from 'react';
 
-const inter = Inter({ subsets: ["latin"], display: "swap" });
+/**
+ * Root layout for the Frank Welsch legal information website.
+ *
+ * This layout wraps all pages in the `(site)` route group. It defines
+ * default metadata and sets up a base HTML structure. Global CSS is
+ * imported here to ensure it is applied to all pages.
+ */
 
 export const metadata: Metadata = {
-  title: SITE_NAME,
-  description: SITE_DESCRIPTION
+  title: {
+    default: 'Insolvenz und Recht – Frank Welsch',
+    template: '%s | Insolvenz und Recht – Frank Welsch',
+  },
+  description:
+    'Aktuelle Informationen zu Insolvenzverfahren, Dienstleistungen und Rechtsthemen. Bereitgestellt von Frank Welsch und seinem Team.',
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'),
+  openGraph: {
+    locale: 'de_DE',
+    type: 'website',
+    title: 'Insolvenz und Recht – Frank Welsch',
+    description:
+      'Aktuelle Informationen zu Insolvenzverfahren, Dienstleistungen und Rechtsthemen. Bereitgestellt von Frank Welsch und seinem Team.',
+    siteName: 'Insolvenz und Recht – Frank Welsch',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Insolvenz und Recht – Frank Welsch',
+    description:
+      'Aktuelle Informationen zu Insolvenzverfahren, Dienstleistungen und Rechtsthemen. Bereitgestellt von Frank Welsch und seinem Team.',
+  },
 };
 
-export default function SiteLayout({ children }: { children: React.ReactNode }) {
+export default function RootLayout({
+  children,
+}: {
+  /** The page content to be rendered within the layout */
+  children: ReactNode;
+}) {
   return (
-    <html lang="de" className={inter.className}>
-      <body>
-        <header className="border-b border-slate-200 bg-white">
-          <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-4">
-            <Link href="/" className="text-lg font-semibold text-slate-900">
-              {SITE_NAME}
-            </Link>
-            <nav className="flex items-center gap-4 text-sm text-slate-600">
-              <Link href="/leistungen/insolvenzberatung">Leistungen</Link>
-              <Link href="/personen/dr-julia-weber">Personen</Link>
-              <Link href="/blog/insolvenz-plan">Blog</Link>
-            </nav>
-          </div>
-        </header>
-        <main className="mx-auto max-w-6xl px-4 py-10">{children}</main>
-        <footer className="border-t border-slate-200 bg-slate-50">
-          <div className="mx-auto flex max-w-6xl flex-col gap-2 px-4 py-6 text-sm text-slate-600">
-            <span>© {new Date().getFullYear()} {SITE_NAME}</span>
-            <span>Fachinformationen zum deutschen Insolvenzrecht.</span>
-          </div>
-        </footer>
+    <html lang="de">
+      <body className="min-h-screen flex flex-col bg-white text-gray-900">
+        {children}
       </body>
     </html>
   );
