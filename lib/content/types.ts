@@ -12,8 +12,7 @@ export interface FaqEntry {
 }
 
 /**
- * ✅ Backwards-compatible alias (fixes your build error)
- * Some components/imports expect `ContentFaq`.
+ * ✅ Backwards-compatible alias (your components import this name)
  */
 export type ContentFaq = FaqEntry;
 
@@ -41,6 +40,19 @@ export interface BaseContent {
   /** Markdown string containing the body of the content. */
   markdown: string;
 }
+
+/**
+ * ✅ Backwards-compatible "minimal content" type used by components like RelatedContent
+ * Some parts of the app only need: { type, slug, title, excerpt } etc.
+ *
+ * IMPORTANT:
+ * We intentionally keep `type: string` so that TS does NOT force you to list
+ * every possible type key in label maps, and so that any future content type
+ * won't break the build.
+ */
+export type ContentWithType = BaseContent & {
+  type: string;
+};
 
 export interface BlogArticle extends BaseContent {
   type: "blog";
@@ -113,3 +125,8 @@ export interface Location extends BaseContent {
   /** URL for a map or directions. */
   mapUrl?: string;
 }
+
+/**
+ * Optional helper union (safe to export; doesn’t break anything)
+ */
+export type AnyContent = BlogArticle | Person | Service | LexikonEntry | Location | ContentWithType;
