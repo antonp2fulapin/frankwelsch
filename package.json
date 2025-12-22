@@ -17,7 +17,7 @@
     "react-dom": "^19.2.0",
     "markdown-it": "^14.0.0",
     "zod": "^3.22.1",
-    "date-fns": "^2.31.0"
+    "date-fns": "^2.30.0"
   },
   "devDependencies": {
     "typescript": "^5.3.3",
