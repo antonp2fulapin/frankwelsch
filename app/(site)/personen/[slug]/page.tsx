@@ -10,10 +10,7 @@ import {
   getRelatedContent
 } from "@/lib/content";
 import { buildMetadata, getSiteUrl } from "@/lib/seo";
-import {
-  buildBreadcrumbSchema,
-  buildPersonSchema
-} from "@/lib/schema";
+import { buildBreadcrumbSchema, buildPersonSchema } from "@/lib/schema";
 
 export const revalidate = 300;
 
@@ -26,6 +23,7 @@ interface PageProps {
 
 export const generateMetadata = async ({ params }: PageProps) => {
   const { slug } = await params;
+
   const entry = getContentBySlug("personen", slug);
   if (!entry) return {};
 
@@ -38,27 +36,34 @@ export const generateMetadata = async ({ params }: PageProps) => {
 
 export default async function PersonenPage({ params }: PageProps) {
   const { slug } = await params;
+
   const entry = getContentBySlug("personen", slug);
   if (!entry) notFound();
 
   const glossaryTerms = getGlossaryTerms();
   const related = getRelatedContent(entry, getAllContent());
   const siteUrl = getSiteUrl();
+
   const canonical = entry.canonical.startsWith("http")
     ? entry.canonical
     : `${siteUrl}${entry.canonical}`;
 
-  const schemas = [
+  const schemas: unknown[] = [];
+
+  schemas.push(
     buildBreadcrumbSchema([
       { name: "Startseite", url: siteUrl },
       { name: entry.title, url: canonical }
-    ]),
+    ])
+  );
+
+  schemas.push(
     buildPersonSchema({
       name: entry.title,
-      description: entry.excerpt,
-      url: canonical
+      url: canonical,
+      description: entry.excerpt
     })
-  ];
+  );
 
   return (
     <div className="space-y-8">
@@ -75,18 +80,11 @@ export default async function PersonenPage({ params }: PageProps) {
       />
 
       <header className="space-y-3">
-        <h1 className="text-4xl font-semibold text-slate-900">
-          {entry.title}
-        </h1>
-        <p className="text-lg text-slate-600">
-          {entry.excerpt}
-        </p>
+        <h1 className="text-4xl font-semibold text-slate-900">{entry.title}</h1>
+        <p className="text-lg text-slate-600">{entry.excerpt}</p>
       </header>
 
-      <ArticleRenderer
-        markdown={entry.markdown}
-        glossaryTerms={glossaryTerms}
-      />
+      <ArticleRenderer markdown={entry.markdown} glossaryTerms={glossaryTerms} />
 
       <RelatedContent items={related} />
     </div>
