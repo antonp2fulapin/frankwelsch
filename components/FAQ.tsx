@@ -4,22 +4,25 @@ export const FAQ = ({ items }: { items: ContentFaq[] }) => {
   if (!items?.length) return null;
 
   return (
-    <section className="space-y-4">
-      <h2 className="text-2xl font-semibold text-slate-900">FAQ</h2>
+    <section className="space-y-6">
+      <h2 className="text-2xl font-semibold text-slate-900 md:text-3xl">FAQ</h2>
 
-      <dl className="space-y-4">
+      <div className="space-y-3">
         {items.map((item, index) => (
-          <div
+          <details
             key={`${item.question}-${index}`}
-            className="rounded-lg border border-slate-200 p-4"
+            className="group rounded-2xl border border-slate-200/70 bg-white px-5 py-4 shadow-sm"
           >
-            <dt className="font-medium text-slate-900">{item.question}</dt>
-            <dd className="mt-2 whitespace-pre-line text-slate-700">
-              {item.answer}
-            </dd>
-          </div>
+            <summary className="flex cursor-pointer list-none items-center justify-between gap-4 text-sm font-semibold text-slate-900">
+              <span>{item.question}</span>
+              <span className="text-slate-400 transition group-open:rotate-45">+</span>
+            </summary>
+            <div className="mt-3 text-sm text-slate-700 md:text-base">
+              <p className="whitespace-pre-line">{item.answer}</p>
+            </div>
+          </details>
         ))}
-      </dl>
+      </div>
     </section>
   );
 };

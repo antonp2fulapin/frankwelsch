@@ -1,4 +1,5 @@
 import { notFound } from "next/navigation";
+import Link from "next/link";
 import { ArticleRenderer } from "@/components/ArticleRenderer";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { FAQ } from "@/components/FAQ";
@@ -12,6 +13,8 @@ import {
 } from "@/lib/content";
 import { buildMetadata, getSiteUrl } from "@/lib/seo";
 import { buildBreadcrumbSchema, buildFAQSchema, buildServiceSchema } from "@/lib/schema";
+import { Badge } from "@/components/ui/Badge";
+import { Card } from "@/components/ui/Card";
 
 export const revalidate = 300;
 
@@ -72,7 +75,7 @@ export default async function LeistungenPage({ params }: PageProps) {
   }
 
   return (
-    <div className="space-y-8">
+    <div className="space-y-10">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(schemas) }}
@@ -81,16 +84,60 @@ export default async function LeistungenPage({ params }: PageProps) {
       <Breadcrumbs
         items={[
           { label: "Startseite", href: "/" },
+          { label: "Leistungen", href: "/leistungen" },
           { label: entry.title, href: `/leistungen/${entry.slug}` }
         ]}
       />
 
-      <header className="space-y-3">
-        <h1 className="text-4xl font-semibold text-slate-900">{entry.title}</h1>
-        <p className="text-lg text-slate-600">{entry.excerpt}</p>
-      </header>
+      <div className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_320px] lg:items-start">
+        <Card className="space-y-8">
+          <header className="space-y-4">
+            <Badge>Leistung</Badge>
+            <div className="space-y-3">
+              <h1 className="text-4xl font-semibold tracking-tight text-slate-900 md:text-5xl">
+                {entry.title}
+              </h1>
+              <p className="text-lg text-slate-600 md:text-xl">{entry.excerpt}</p>
+            </div>
+          </header>
 
-      <ArticleRenderer markdown={entry.markdown} glossaryTerms={glossaryTerms} />
+          <ArticleRenderer markdown={entry.markdown} glossaryTerms={glossaryTerms} />
+        </Card>
+
+        <aside className="space-y-6">
+          <Card className="space-y-4">
+            <h2 className="text-sm font-semibold uppercase tracking-wide text-slate-500">
+              Schlagworte
+            </h2>
+            <div className="flex flex-wrap gap-2">
+              {entry.keywords.map((keyword) => (
+                <span
+                  key={keyword}
+                  className="rounded-full border border-slate-200 bg-slate-50 px-3 py-1 text-xs font-medium text-slate-600"
+                >
+                  {keyword}
+                </span>
+              ))}
+            </div>
+          </Card>
+          {related.length ? (
+            <Card className="space-y-4">
+              <h2 className="text-sm font-semibold uppercase tracking-wide text-slate-500">
+                Passende Inhalte
+              </h2>
+              <ul className="space-y-3 text-sm text-slate-700">
+                {related.slice(0, 4).map((item) => (
+                  <li key={`${item.type}-${item.slug}`}>
+                    <Link href={`/${item.type}/${item.slug}`} className="hover:text-slate-900">
+                      {item.title}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </Card>
+          ) : null}
+        </aside>
+      </div>
 
       {entry.faq?.length ? <FAQ items={entry.faq} /> : null}
 
