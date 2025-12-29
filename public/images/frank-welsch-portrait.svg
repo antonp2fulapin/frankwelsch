@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 860" role="img" aria-labelledby="title desc">
+  <title id="title">Portrait Frank Welsch</title>
+  <desc id="desc">Stilisiertes Portrait von Rechtsanwalt Frank Welsch in dunklem Anzug mit orangefarbener Krawatte.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0f172a"/>
+      <stop offset="100%" stop-color="#1e293b"/>
+    </linearGradient>
+  </defs>
+  <rect width="720" height="860" fill="url(#bg)" rx="36"/>
+  <ellipse cx="360" cy="410" rx="190" ry="220" fill="#f5d4b7"/>
+  <rect x="200" y="560" width="320" height="190" rx="40" fill="#101827"/>
+  <rect x="285" y="560" width="150" height="280" rx="20" fill="#f7f7fb"/>
+  <polygon points="360,560 320,640 400,640" fill="#f7f7fb"/>
+  <polygon points="360,640 318,800 402,800" fill="#f46d2f" opacity="0.94"/>
+  <rect x="224" y="270" width="272" height="146" rx="44" fill="#2b1a08" opacity="0.7"/>
+  <rect x="244" y="292" width="110" height="92" rx="24" fill="none" stroke="#2b1a08" stroke-width="12"/>
+  <rect x="366" y="292" width="110" height="92" rx="24" fill="none" stroke="#2b1a08" stroke-width="12"/>
+  <rect x="352" y="324" width="28" height="26" fill="#2b1a08"/>
+  <circle cx="290" cy="332" r="14" fill="#0f172a" opacity="0.45"/>
+  <circle cx="430" cy="332" r="14" fill="#0f172a" opacity="0.45"/>
+  <text x="360" y="842" fill="#e2e8f0" font-size="32" font-family="'Inter', 'Segoe UI', Arial" text-anchor="middle">Frank Welsch – Fachanwalt</text>
+</svg>
