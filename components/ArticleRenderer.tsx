@@ -10,8 +10,25 @@ export async function ArticleRenderer({
   const html = await renderMarkdown(markdown, glossaryTerms);
 
   return (
-    <article className="prose prose-slate max-w-none prose-headings:font-semibold prose-headings:tracking-tight prose-lead:text-slate-600 prose-p:text-slate-700 prose-a:text-slate-900 prose-a:font-medium prose-a:no-underline hover:prose-a:underline prose-strong:text-slate-900 prose-blockquote:border-slate-300">
-      <div dangerouslySetInnerHTML={{ __html: html }} />
+    <article
+  className="
+    prose prose-slate
+    mx-auto max-w-3xl lg:max-w-4xl
+    prose-headings:font-semibold
+    prose-headings:tracking-tight
+    prose-h2:text-2xl prose-h2:mt-12
+    prose-h3:text-xl prose-h3:mt-8
+    prose-p:leading-relaxed
+    prose-ul:mt-4 prose-ul:space-y-2
+    prose-li:marker:text-slate-400
+    prose-strong:text-slate-900
+  "
+>
+
+      <div
+  className="space-y-10"
+  dangerouslySetInnerHTML={{ __html: html }}
+/>
     </article>
   );
 }
