@@ -4,13 +4,25 @@
   "excerpt": "Strategische Beratung zur Früherkennung, Restrukturierung und Begleitung in Insolvenzverfahren.",
   "datePublished": "2024-08-01",
   "dateModified": "2024-11-30",
-  "keywords": ["Insolvenzberatung", "Restrukturierung", "Sanierung"],
+  "keywords": [
+    "Insolvenzberatung",
+    "Restrukturierung",
+    "Sanierung"
+  ],
   "canonical": "/leistungen/insolvenzberatung",
   "faq": [
     {
       "question": "Welche Unterlagen werden benötigt?",
       "answer": "Für eine erste Einschätzung sind aktuelle betriebswirtschaftliche Auswertungen, Liquiditätspläne und eine Übersicht der Verbindlichkeiten hilfreich."
+    },
+    {
+      "question": "Wie früh sollte eine Insolvenzberatung erfolgen?",
+      "answer": "Je früher, desto besser. Eine frühzeitige Beratung ermöglicht mehr Handlungsspielraum und kann Insolvenzverfahren vermeiden oder optimal vorbereiten."
+    },
+    {
+      "question": "Was kostet eine Insolvenzberatung?",
+      "answer": "Die Kosten richten sich nach dem Aufwand und werden individuell vereinbart. Eine erste Erstberatung kann oft kostengünstig erfolgen."
     }
   ],
-  "markdown": "Unsere Insolvenzberatung unterstützt bei der Analyse der Liquidität, der Auswahl geeigneter Sanierungsinstrumente und der Kommunikation mit Stakeholdern.\n\n### Leistungen im Überblick\n\n- Krisenfrüherkennung\n- Restrukturierungskonzepte\n- Begleitung im Insolvenzverfahren"
+  "markdown": "Unsere Insolvenzberatung unterstützt Unternehmen in kritischen Situationen bei der Analyse der wirtschaftlichen Lage, der Auswahl geeigneter Sanierungsinstrumente und der Kommunikation mit Stakeholdern.\n\n### Leistungen im Überblick\n\n- **Krisenfrüherkennung**: Analyse der Liquiditätslage und Identifikation von Risiken\n- **Restrukturierungskonzepte**: Entwicklung maßgeschneiderter Sanierungsstrategien\n- **Begleitung im Insolvenzverfahren**: Rechtliche Unterstützung während des gesamten Verfahrens\n- **Stakeholder-Kommunikation**: Koordination mit Gläubigern, Investoren und Behörden\n- **Antragsvorbereitung**: Unterstützung bei der Vorbereitung von Insolvenzanträgen\n\n### Wann ist eine Insolvenzberatung sinnvoll?\n\nEine professionelle Beratung sollte bereits bei ersten Anzeichen einer Krise in Anspruch genommen werden. Typische Indikatoren sind:\n\n- Zahlungsschwierigkeiten bei fälligen Verbindlichkeiten\n- Überschuldung oder drohende Überschuldung\n- Liquiditätsengpässe\n- Rückläufige Umsätze oder Gewinne\n- Probleme bei der Kreditverlängerung\n\n### Unser Ansatz\n\nWir analysieren Ihre Situation gründlich, entwickeln realistische Lösungsansätze und begleiten Sie bei der Umsetzung. Dabei stehen stets die Erhaltung des Unternehmens und die Minimierung von Risiken im Vordergrund."
 }
