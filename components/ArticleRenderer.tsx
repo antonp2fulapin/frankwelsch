@@ -20,23 +20,29 @@ export async function ArticleRenderer({
   return (
     <article
       className={[
-        // Typography (requires @tailwindcss/typography)
         "prose prose-slate",
-        // Better rhythm + readability
+        "max-w-none",
+
+        // Headings & anchor offset (sticky header friendly)
         "prose-headings:font-semibold prose-headings:tracking-tight",
         "prose-headings:scroll-mt-28",
         "prose-h2:mt-14 prose-h2:text-2xl",
         "prose-h3:mt-10 prose-h3:text-xl",
+
+        // Paragraphs
         "prose-p:leading-relaxed prose-p:text-slate-700",
-        // Lists: ensure visible bullets even if other CSS interferes
+
+        // Lists: force bullets back (Tailwind preflight removes them)
         "prose-ul:list-disc prose-ul:pl-6 prose-ul:space-y-2",
         "prose-ol:list-decimal prose-ol:pl-6",
         "prose-li:marker:text-slate-400",
-        // Links: avoid “everything underlined” look
+
+        // Links: nicer than permanent underlines (also applies to glossary links)
         "prose-a:font-medium prose-a:text-slate-900",
         "prose-a:!no-underline prose-a:border-b prose-a:border-slate-300",
         "hover:prose-a:border-slate-500",
-        // Quotes
+
+        // Blockquotes
         "prose-blockquote:border-slate-300",
       ].join(" ")}
     >
