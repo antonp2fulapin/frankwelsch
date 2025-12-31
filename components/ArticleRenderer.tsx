@@ -1,34 +1,46 @@
+// components/ArticleRenderer.tsx
 import { renderMarkdown } from "@/lib/markdown";
+import { stripLeadingH1 } from "@/lib/markdown/normalize";
+import { ensureHeadingIds } from "@/lib/markdown/html";
 
 export async function ArticleRenderer({
   markdown,
-  glossaryTerms
+  glossaryTerms,
+  stripTitle = true,
 }: {
   markdown: string;
   glossaryTerms: { term: string; slug: string }[];
+  stripTitle?: boolean;
 }) {
-  const html = await renderMarkdown(markdown, glossaryTerms);
+  const normalized = stripTitle ? stripLeadingH1(markdown) : markdown;
+
+  const rawHtml = await renderMarkdown(normalized, glossaryTerms);
+  const html = ensureHeadingIds(rawHtml);
 
   return (
     <article
-  className="
-    prose prose-slate
-    mx-auto max-w-3xl lg:max-w-4xl
-    prose-headings:font-semibold
-    prose-headings:tracking-tight
-    prose-h2:text-2xl prose-h2:mt-12
-    prose-h3:text-xl prose-h3:mt-8
-    prose-p:leading-relaxed
-    prose-ul:mt-4 prose-ul:space-y-2
-    prose-li:marker:text-slate-400
-    prose-strong:text-slate-900
-  "
->
-
-      <div
-  className="space-y-10"
-  dangerouslySetInnerHTML={{ __html: html }}
-/>
+      className={[
+        // Typography (requires @tailwindcss/typography)
+        "prose prose-slate",
+        // Better rhythm + readability
+        "prose-headings:font-semibold prose-headings:tracking-tight",
+        "prose-headings:scroll-mt-28",
+        "prose-h2:mt-14 prose-h2:text-2xl",
+        "prose-h3:mt-10 prose-h3:text-xl",
+        "prose-p:leading-relaxed prose-p:text-slate-700",
+        // Lists: ensure visible bullets even if other CSS interferes
+        "prose-ul:list-disc prose-ul:pl-6 prose-ul:space-y-2",
+        "prose-ol:list-decimal prose-ol:pl-6",
+        "prose-li:marker:text-slate-400",
+        // Links: avoid “everything underlined” look
+        "prose-a:font-medium prose-a:text-slate-900",
+        "prose-a:!no-underline prose-a:border-b prose-a:border-slate-300",
+        "hover:prose-a:border-slate-500",
+        // Quotes
+        "prose-blockquote:border-slate-300",
+      ].join(" ")}
+    >
+      <div className="space-y-10" dangerouslySetInnerHTML={{ __html: html }} />
     </article>
   );
 }
