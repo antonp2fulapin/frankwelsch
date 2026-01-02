@@ -81,7 +81,7 @@ export default async function StandortePage({ params }: PageProps) {
       />
 
       <header className="space-y-4">
-        <Badge>Standort</Badge>
+        <Badge>Kanzleisitz</Badge>
         <div className="space-y-3">
           <h1 className="text-4xl font-semibold tracking-tight text-slate-900 md:text-5xl">
             {entry.title}

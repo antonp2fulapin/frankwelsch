@@ -9,7 +9,7 @@ const navItems = [
   { href: "/leistungen", label: "Leistungen" },
   { href: "/lexikon", label: "Lexikon" },
   { href: "/personen", label: "Team" },
-  { href: "/standorte", label: "Standorte" }
+  { href: "/standorte/guetersloh", label: "Gütersloh" }
 ];
 
 const isActive = (pathname: string, href: string) => {

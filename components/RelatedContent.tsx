@@ -7,11 +7,11 @@ const labelMap: Record<string, string> = {
   leistungen: "Leistungen",
   lexikon: "Lexikon",
   personen: "Personen",
-  standorte: "Standorte",
+  standorte: "Gütersloh",
   // fallbacks for possible internal names:
   person: "Personen",
   service: "Leistungen",
-  location: "Standorte"
+  location: "Gütersloh"
 };
 
 export const RelatedContent = ({ items }: { items: ContentWithType[] }) => {

@@ -7,7 +7,7 @@ const navigation = [
   { href: "/leistungen", label: "Leistungen" },
   { href: "/lexikon", label: "Lexikon" },
   { href: "/personen", label: "Team" },
-  { href: "/standorte", label: "Standorte" }
+  { href: "/standorte/guetersloh", label: "Gütersloh" }
 ];
 
 const services = [
@@ -55,9 +55,9 @@ export function SiteFooter() {
               Kontakt
             </div>
             <ul className="space-y-2 text-sm text-slate-600">
-              <li>Telefon: +49 (0)30 000 000</li>
-              <li>E-Mail: kontakt@frankwelsch.de</li>
-              <li>Standorte: Berlin · Hamburg · München</li>
+              <li>Telefon: +49 5241 9899333</li>
+              <li>E-Mail: kanzlei@frank-welsch-insolvenzverwalter.de</li>
+              <li>Barkeystraße 30, 33330 Gütersloh, Deutschland</li>
             </ul>
           </div>
         </div>
