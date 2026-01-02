@@ -233,9 +233,9 @@ export default async function HomePage() {
           }
         />
 
-        <div className="grid gap-6 lg:grid-cols-2">
+        <div className="grid gap-6 lg:grid-cols-1">
           {/* Blog list */}
-          <div className="grid gap-6 lg:grid-cols-1">
+          <div className="grid gap-6 md:grid-cols-3">
             {latestBlog.map((entry) => (
               <Card key={entry.slug} className="flex h-full flex-col justify-between">
                 <div className="space-y-3">
