@@ -25,17 +25,21 @@ export async function ArticleRenderer({
 
         // Headings & anchor offset (sticky header friendly)
         "prose-headings:font-semibold prose-headings:tracking-tight",
+        "prose-headings:text-slate-900",
         "prose-headings:scroll-mt-28",
-        "prose-h2:mt-14 prose-h2:text-2xl",
-        "prose-h3:mt-10 prose-h3:text-xl",
+        "prose-h2:mt-14 prose-h2:text-2xl prose-h2:border-b prose-h2:border-slate-200 prose-h2:pb-3",
+        "prose-h3:mt-10 prose-h3:text-xl prose-h3:text-slate-900",
 
         // Paragraphs
-        "prose-p:leading-relaxed prose-p:text-slate-700",
+        "prose-p:leading-relaxed prose-p:text-slate-800",
 
         // Lists: force bullets back (Tailwind preflight removes them)
-        "prose-ul:list-disc prose-ul:pl-6 prose-ul:space-y-2",
+        "prose-ul:list-disc prose-ul:pl-6 prose-ul:space-y-3",
         "prose-ol:list-decimal prose-ol:pl-6",
-        "prose-li:marker:text-slate-400",
+        "prose-li:marker:text-slate-400 prose-li:leading-relaxed",
+
+        // Emphasis
+        "prose-strong:text-slate-900",
 
         // Links: nicer than permanent underlines (also applies to glossary links)
         "prose-a:font-medium prose-a:text-slate-900",
