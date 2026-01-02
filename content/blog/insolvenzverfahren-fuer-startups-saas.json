@@ -1,0 +1,31 @@
+{
+  "slug": "insolvenzverfahren-fuer-startups-saas",
+  "title": "Firmeninsolvenz bei Startups & SaaS: Verträge, IP, Kundenbindung (Praxis)",
+  "excerpt": "Spezialthemen bei Startup-/SaaS-Insolvenzen: IP/Code, Hosting, Kundenverträge, MRR, Datenräume – und wie man Fortführung/Deal vorbereitet.",
+  "datePublished": "2026-01-23",
+  "dateModified": "2026-01-23",
+  "keywords": [
+    "Startup Insolvenz",
+    "SaaS Insolvenz",
+    "IP",
+    "Hosting",
+    "Asset Deal",
+    "Frank Welsch"
+  ],
+  "canonical": "/blog/insolvenzverfahren-fuer-startups-saas",
+  "faq": [
+    {
+      "question": "Was ist bei SaaS besonders kritisch?",
+      "answer": "Hosting/Cloud-Kosten, Datenzugriffe, Kundenverträge, IP-Rechte und ein sauberer Übergang der Betriebsprozesse."
+    },
+    {
+      "question": "Wie erhöht man die Deal-Chancen?",
+      "answer": "Mit geordnetem Datenraum, klarer IP-Lage, stabiler Servicefähigkeit und transparenter KPI-Darstellung (MRR/Churn)."
+    },
+    {
+      "question": "Welche Sanierungsoptionen gibt es?",
+      "answer": "Je nach Lage: Insolvenzplan, Eigenverwaltung, übertragende Sanierung oder (früh) StaRUG."
+    }
+  ],
+  "markdown": "## SaaS-Insolvenz: Fortführung und Transaktion\n\nStartups haben oft wenig Assets – aber hohen Wert in IP, Team und Kundenbasis. Deshalb ist die Fortführung/Transaktion besonders zeitkritisch.\n\n### Interne Links\n\n- Blog: [Kauf aus der Insolvenz – Due Diligence](/blog/due-diligence-kauf-aus-insolvenz)\n- Lexikon: [Übertragende Sanierung](/lexikon/uebertragende-sanierung)\n- Lexikon: [Eigenverwaltung](/lexikon/eigenverwaltung)\n- Blog: [Eigenverwaltung – Vorteile/Nachteile](/blog/eigenverwaltung-vorteile-nachteile)\n\n### Externe Links\n\n- [StaRUG](https://www.gesetze-im-internet.de/starug/)\n- [Insolvenzordnung (InsO)](https://www.gesetze-im-internet.de/inso/)\n\nFür Sanierungs-Setup: [Sanierungsberatung](/leistungen/sanierungsberatung)."
+}

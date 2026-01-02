@@ -1,0 +1,31 @@
+{
+  "slug": "insolvenzverfahren-it-systeme-datenzugriff",
+  "title": "IT-Systeme & Datenzugriff im Insolvenzverfahren: Quick Wins für Fortführung",
+  "excerpt": "Wie Unternehmen im Insolvenzverfahren IT/Hosting/Datenzugriff sichern: Rollen, Passwörter, Verträge, Kosten und Übergabe an Verwalter/Erwerber.",
+  "datePublished": "2026-03-09",
+  "dateModified": "2026-03-09",
+  "keywords": [
+    "IT",
+    "Hosting",
+    "Datenzugriff",
+    "Insolvenzverfahren",
+    "Fortführung",
+    "Asset Deal"
+  ],
+  "canonical": "/blog/insolvenzverfahren-it-systeme-datenzugriff",
+  "faq": [
+    {
+      "question": "Was ist der häufigste IT-Fehler in der Krise?",
+      "answer": "Unklare Zugriffsrechte/Passwörter und fehlende Vertragsübersicht – dadurch bricht der Betrieb oder der Deal-Prozess."
+    },
+    {
+      "question": "Welche Systeme sind typischerweise kritisch?",
+      "answer": "ERP, Buchhaltung, Lohn, CRM, Cloud/Hosting, Ticketsysteme, Domain/DNS, Banking/Payment."
+    },
+    {
+      "question": "Wie hilft ein Datenraum?",
+      "answer": "Er schafft schnelle Übersicht zu Verträgen, Admin-Zugängen, Kosten und Übergabepunkten."
+    }
+  ],
+  "markdown": "## IT stabilisieren, Deal-Fähigkeit erhöhen\n\nIn vielen Unternehmensinsolvenzen entscheidet IT-Verfügbarkeit über Fortführung und Transaktion.\n\n### Interne Links\n\n- Blog/new: [Datenraum-Checkliste](/blog/insolvenzverfahren-unterlagen-datenraum-checkliste)\n- Blog/new: [Startup & SaaS Insolvenz](/blog/insolvenzverfahren-fuer-startups-saas)\n- Blog/new: [M&A aus Insolvenz – Prozess](/blog/m-aus-insolvenz-prozess-zeitplan)\n\n### Externe Links\n\n- [InsO](https://www.gesetze-im-internet.de/inso/)\n"
+}

@@ -1,0 +1,30 @@
+{
+  "slug": "due-diligence-kauf-aus-insolvenz",
+  "title": "Kauf aus der Insolvenz: Due Diligence im Asset Deal (Praxis-Checkliste)",
+  "excerpt": "Checkliste für Investoren/Erwerber beim Kauf aus der Insolvenz: Assets, Verträge, Personal, IP, Risiken – inkl. interner und externer Links.",
+  "datePublished": "2026-01-11",
+  "dateModified": "2026-01-11",
+  "keywords": [
+    "Kauf aus Insolvenz",
+    "Due Diligence",
+    "Asset Deal",
+    "Betriebsübergang",
+    "Unternehmensinsolvenz"
+  ],
+  "canonical": "/blog/due-diligence-kauf-aus-insolvenz",
+  "faq": [
+    {
+      "question": "Warum ist Due Diligence in der Insolvenz anders?",
+      "answer": "Weil Zeitfenster kürzer sind, Datenlage teils fragmentiert ist und rechtliche Wirkungen (z. B. Vertragsübernahmen) besonders sauber gestaltet werden müssen."
+    },
+    {
+      "question": "Welche Themen sind kritisch?",
+      "answer": "Vertragslage, Personal/Betriebsübergang, IP/IT, Sicherheiten, Datenqualität, Lieferketten und laufende Projekte."
+    },
+    {
+      "question": "Wie kann man Risiken reduzieren?",
+      "answer": "Durch klare Asset-Liste, saubere Vertragsübernahmen, definierte Closing-Bedingungen und abgestimmte Kommunikation mit Verwalter/Sachwalter."
+    }
+  ],
+  "markdown": "## Asset Deal aus der Insolvenz: DD-Checkliste\n\n### Interne Links\n\n- Lexikon: [Absonderungsrechte](/lexikon/absonderungsrechte)\n- Blog: [Übertragende Sanierung – Asset Deal](/blog/uebertragende-sanierung-ablauf-asset-deal)\n\n### Externe Links\n\n- [§ 613a BGB (Betriebsübergang)](https://www.gesetze-im-internet.de/bgb/__613a.html)\n\nFür strukturierte Transaktionsbegleitung: [Restrukturierung](/leistungen/restrukturierung)."
+}

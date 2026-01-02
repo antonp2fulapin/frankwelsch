@@ -1,0 +1,30 @@
+{
+  "slug": "kunden-vorauszahlungen-firmeninsolvenz",
+  "title": "Kunden, Vorauszahlungen und Aufträge in der Firmeninsolvenz",
+  "excerpt": "Was Kunden bei Vorauszahlungen, laufenden Projekten und Vertragsfortführung beachten sollten – mit internen Links zu Lexikonbegriffen und externen Quellen.",
+  "datePublished": "2026-01-07",
+  "dateModified": "2026-01-07",
+  "keywords": [
+    "Vorauszahlung",
+    "Kunden",
+    "Firmeninsolvenz",
+    "Vertragsfortführung",
+    "Insolvenzrecht"
+  ],
+  "canonical": "/blog/kunden-vorauszahlungen-firmeninsolvenz",
+  "faq": [
+    {
+      "question": "Sollte ich weiter zahlen, wenn das Unternehmen insolvent ist?",
+      "answer": "Das hängt vom Status (vorläufig/eröffnet), der Leistungserbringung und den Sicherungen ab. Zahlungen sollten nur auf klarer Rechtsgrundlage erfolgen."
+    },
+    {
+      "question": "Was passiert mit laufenden Aufträgen?",
+      "answer": "Je nach Vertrag und Verfahrensstand können Fortführung, Anpassung oder Beendigung in Betracht kommen. Wichtig ist die Abstimmung mit dem Verwalter."
+    },
+    {
+      "question": "Kann ich meine Forderung anmelden?",
+      "answer": "Offene Ansprüche können in vielen Fällen als Insolvenzforderung zur Tabelle angemeldet werden."
+    }
+  ],
+  "markdown": "## Kundenperspektive in der Unternehmensinsolvenz\n\nKunden stehen häufig vor der Frage: Vertrag fortführen, stoppen oder absichern? Hier helfen klare Prüfschritte.\n\n### Interne Links\n\n- Lexikon: [Insolvenzforderung](/lexikon/insolvenzforderung)\n- Lexikon: [Insolvenztabelle](/lexikon/insolvenztabelle)\n- Beitrag: [Als Gläubiger im Insolvenzverfahren](/blog/glaeubiger-insolvenzverfahren)\n\n### Externe Links\n\n- [Insolvenzbekanntmachungen](https://www.insolvenzbekanntmachungen.de/)\n\nWenn Sie als Gläubiger schnell Klarheit brauchen: [Gläubigervertretung in Gütersloh](/blog/glaeubigervertretung-guetersloh)."
+}
