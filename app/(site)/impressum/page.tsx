@@ -16,22 +16,60 @@ export default function ImpressumPage() {
     <div className="space-y-10">
       <SectionHeader title="Impressum" subtitle="Anbieterkennzeichnung gemäß § 5 TMG." />
       <Card className="space-y-4 text-sm text-slate-600">
-        <div>
+        <div className="space-y-1">
           <div className="text-base font-semibold text-slate-900">Frank Welsch Rechtsanwälte</div>
-          <div>Musterstraße 12</div>
-          <div>10115 Berlin</div>
+          <div>Barkeystraße 30</div>
+          <div>33330 Gütersloh, Deutschland</div>
         </div>
-        <div>
-          <div>Telefon: +49 (0)30 000 000</div>
-          <div>E-Mail: kontakt@frankwelsch.de</div>
+        <div className="space-y-1">
+          <div>Telefon: +49 5241 9899333</div>
+          <div>E-Mail: kanzlei@frank-welsch-insolvenzverwalter.de</div>
         </div>
-        <div>
+        <div className="space-y-1">
+          <div className="font-semibold text-slate-900">Zuständige Aufsichtsbehörde / Kammer</div>
+          <p>Rechtsanwaltskammer Hamm, Ostenallee 18, 59063 Hamm</p>
+          <p>Fon: +49 2381 9850 00 · Fax: +49 2381 9850 50</p>
+          <p>Mail: info@rak-hamm.de · Web: www.rechtsanwaltskammer-hamm.de</p>
+        </div>
+        <div className="space-y-1">
           <div className="font-semibold text-slate-900">Berufsbezeichnung</div>
-          <p>Rechtsanwälte (Bundesrepublik Deutschland).</p>
+          <p>Rechtsanwalt/Rechtsanwältin, verliehen nach dem Recht der Bundesrepublik Deutschland</p>
         </div>
-        <div>
-          <div className="font-semibold text-slate-900">Zuständige Kammer</div>
-          <p>Rechtsanwaltskammer Berlin, Littenstraße 9, 10179 Berlin.</p>
+        <div className="space-y-2">
+          <div className="font-semibold text-slate-900">Berufsrechtliche Regelungen</div>
+          <ul className="list-disc space-y-1 pl-5">
+            <li>Bundesrechtsanwaltsordnung (BRAO)</li>
+            <li>Berufsordnung (BORA)</li>
+            <li>Fachanwaltsordnung (FAO)</li>
+            <li>Rechtsanwaltsvergütungsgesetz (RVG)</li>
+            <li>Gesetz über die Tätigkeit europäischer Rechtsanwälte in Deutschland (EuRAG)</li>
+            <li>Berufsregeln der Rechtsanwälte der Europäischen Union (CCBE-Berufsregeln)</li>
+            <li>Berufsrechtliche Ergänzungen zum Geldwäschebekämpfungsgesetz (GwG)</li>
+          </ul>
+          <p>
+            Regelungen einsehbar unter:{" "}
+            <a
+              href="https://www.brak.de/fuer-anwaelte/berufsrecht/"
+              className="text-slate-900 underline"
+            >
+              https://www.brak.de/fuer-anwaelte/berufsrecht/
+            </a>
+          </p>
+        </div>
+        <div className="space-y-1">
+          <div className="font-semibold text-slate-900">Haftungshinweis</div>
+          <p>
+            Trotz sorgfältiger inhaltlicher Kontrolle übernehmen wir keine Haftung für die Inhalte
+            externer Links. Für den Inhalt der verlinkten Seiten sind ausschließlich deren Betreiber
+            verantwortlich.
+          </p>
+        </div>
+        <div className="space-y-1">
+          <div className="font-semibold text-slate-900">
+            Berufshaftpflichtversicherung gemäß § 51 Bundesrechtsanwaltsordnung (BRAO)
+          </div>
+          <p>Welsch Rechtsanwälte</p>
+          <p>R+V Allgemeine Versicherung AG, Raiffeisenplatz 1, 65189 Wiesbaden</p>
         </div>
       </Card>
     </div>

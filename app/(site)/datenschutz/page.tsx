@@ -25,11 +25,11 @@ export default function DatenschutzPage() {
         </p>
         <div>
           <div className="font-semibold text-slate-900">Verantwortlicher</div>
-          <p>Frank Welsch Rechtsanwälte, Musterstraße 12, 10115 Berlin.</p>
+          <p>Frank Welsch Rechtsanwälte, Barkeystraße 30, 33330 Gütersloh, Deutschland.</p>
         </div>
         <div>
           <div className="font-semibold text-slate-900">Kontakt</div>
-          <p>E-Mail: kontakt@frankwelsch.de</p>
+          <p>E-Mail: kanzlei@frank-welsch-insolvenzverwalter.de</p>
         </div>
         <div>
           <div className="font-semibold text-slate-900">Zwecke der Verarbeitung</div>
