@@ -74,7 +74,7 @@ export default async function HomePage() {
               <ButtonLink href="/leistungen" variant="primary">
                 Leistungen
               </ButtonLink>
-              <ButtonLink href="/personen/frank-welsch" variant="secondary">
+              <ButtonLink href="/personen/frank-welsch" variant="secondaryOnDark">
                 Profil &amp; Qualifikation
               </ButtonLink>
             </div>
@@ -233,7 +233,7 @@ export default async function HomePage() {
           }
         />
 
-        <div className="grid gap-6 lg:grid-cols-[1.3fr_0.7fr]">
+        <div className="grid gap-6 lg:grid-cols-1">
           {/* Blog list */}
           <div className="grid gap-6 md:grid-cols-3">
             {latestBlog.map((entry) => (
