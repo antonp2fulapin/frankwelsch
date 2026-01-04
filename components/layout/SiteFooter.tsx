@@ -55,8 +55,19 @@ export function SiteFooter() {
               Kontakt
             </div>
             <ul className="space-y-2 text-sm text-slate-600">
-              <li>Telefon: +49 5241 9899333</li>
-              <li>E-Mail: kanzlei@frank-welsch-insolvenzverwalter.de</li>
+              <li>
+                <a href="tel:+4952419899333" className="transition hover:text-slate-900">
+                  Telefon: +49 5241 9899333
+                </a>
+              </li>
+              <li>
+                <a
+                  href="mailto:kanzlei@frank-welsch-insolvenzverwalter.de"
+                  className="transition hover:text-slate-900"
+                >
+                  E-Mail: kanzlei@frank-welsch-insolvenzverwalter.de
+                </a>
+              </li>
               <li>Barkeystraße 30, 33330 Gütersloh, Deutschland</li>
             </ul>
           </div>

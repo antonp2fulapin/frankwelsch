@@ -22,14 +22,31 @@ export default function ImpressumPage() {
           <div>33330 Gütersloh, Deutschland</div>
         </div>
         <div className="space-y-1">
-          <div>Telefon: +49 5241 9899333</div>
-          <div>E-Mail: kanzlei@frank-welsch-insolvenzverwalter.de</div>
+          <a href="tel:+4952419899333" className="block hover:text-slate-900">
+            Telefon: +49 5241 9899333
+          </a>
+          <a
+            href="mailto:kanzlei@frank-welsch-insolvenzverwalter.de"
+            className="block hover:text-slate-900"
+          >
+            E-Mail: kanzlei@frank-welsch-insolvenzverwalter.de
+          </a>
         </div>
         <div className="space-y-1">
           <div className="font-semibold text-slate-900">Zuständige Aufsichtsbehörde / Kammer</div>
           <p>Rechtsanwaltskammer Hamm, Ostenallee 18, 59063 Hamm</p>
-          <p>Fon: +49 2381 9850 00 · Fax: +49 2381 9850 50</p>
-          <p>Mail: info@rak-hamm.de · Web: www.rechtsanwaltskammer-hamm.de</p>
+          <p>
+            <a href="tel:+492381985000" className="hover:text-slate-900">
+              Fon: +49 2381 9850 00
+            </a>{" "}
+            · Fax: +49 2381 9850 50
+          </p>
+          <p>
+            <a href="mailto:info@rak-hamm.de" className="hover:text-slate-900">
+              Mail: info@rak-hamm.de
+            </a>{" "}
+            · Web: www.rechtsanwaltskammer-hamm.de
+          </p>
         </div>
         <div className="space-y-1">
           <div className="font-semibold text-slate-900">Berufsbezeichnung</div>
