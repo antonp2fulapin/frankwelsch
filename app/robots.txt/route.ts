@@ -1,9 +1,9 @@
-import { getSiteUrl } from "@/lib/seo";
+import { getSitemapSiteUrl } from "@/lib/seo";
 
 export const runtime = "nodejs";
 
 export const GET = async () => {
-  const siteUrl = getSiteUrl();
+  const siteUrl = getSitemapSiteUrl();
   const body = `User-agent: *\nAllow: /\nSitemap: ${siteUrl}/sitemap.xml\n`;
 
   return new Response(body, {

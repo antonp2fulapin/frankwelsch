@@ -1,10 +1,10 @@
 import { getAllContentByType } from "@/lib/content";
-import { getSiteUrl } from "@/lib/seo";
+import { getSitemapSiteUrl } from "@/lib/seo";
 
 export const runtime = "nodejs";
 
 export const GET = async () => {
-  const siteUrl = getSiteUrl();
+  const siteUrl = getSitemapSiteUrl();
   const entries = getAllContentByType("lexikon").map((entry) =>
     `<url><loc>${siteUrl}/lexikon/${entry.slug}</loc><lastmod>${entry.dateModified}</lastmod></url>`
   );

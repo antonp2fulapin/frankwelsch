@@ -1,5 +1,5 @@
 import { getAllContentByType } from "@/lib/content";
-import { getSiteUrl } from "@/lib/seo";
+import { getSitemapSiteUrl } from "@/lib/seo";
 
 export const runtime = "nodejs";
 
@@ -8,7 +8,7 @@ const buildUrlEntry = (loc: string, lastmod?: string) => {
 };
 
 export const GET = async () => {
-  const siteUrl = getSiteUrl();
+  const siteUrl = getSitemapSiteUrl();
   const entries = [
     buildUrlEntry(siteUrl),
     ...getAllContentByType("personen").map((entry) =>
