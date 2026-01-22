@@ -3,7 +3,7 @@ export const SITE_DESCRIPTION =
   "Fachinformationen, Glossar und Leistungen rund um Insolvenzrecht, Restrukturierung und Sanierung.";
 export const SITE_LOCALE = "de_DE";
 
-const SITEMAP_BASE_URL = "https://www.frank-welsch-insolvenzverwalter.de";
+const SITEMAP_BASE_URL = "https://www.frank-welsch.info";
 
 export const getSiteUrl = (): string => {
   const envUrl = process.env.NEXT_PUBLIC_SITE_URL;

@@ -71,8 +71,8 @@ export default async function HomePage() {
             </p>
 
             <div className="flex flex-wrap gap-4">
-              <ButtonLink href="/leistungen" variant="primary">
-                Leistungen
+              <ButtonLink href="/Verzeichnis-Insolvenzmasse-K-H-Blume.pdf" variant="primary">
+                Aktueller Katalog zur Insolvenzmasse
               </ButtonLink>
               <ButtonLink href="/personen/frank-welsch" variant="secondaryOnDark">
                 Profil &amp; Qualifikation
