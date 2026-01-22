@@ -30,7 +30,7 @@ export default function DatenschutzPage() {
           </div>
           <div>
             <div className="font-semibold text-slate-900">Kontakt</div>
-            <p>E-Mail: kanzlei@frank-welsch-insolvenzverwalter.de</p>
+            <p>E-Mail: kanzlei@frank-welsch.info</p>
           </div>
         </div>
 
@@ -698,7 +698,7 @@ export default function DatenschutzPage() {
             <p>
               Sie können Ihre Rechte zu jeder Zeit schriftlich, per E-Mail oder telefonisch geltend
               machen. Bitte wenden Sie sich an Frank Welsch Rechtsanwälte, Barkeystraße 30, 33330
-              Gütersloh, Deutschland, E-Mail: kanzlei@frank-welsch-insolvenzverwalter.de.
+              Gütersloh, Deutschland, E-Mail: kanzlei@frank-welsch.info.
             </p>
           </div>
         </div>

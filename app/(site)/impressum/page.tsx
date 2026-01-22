@@ -26,10 +26,10 @@ export default function ImpressumPage() {
             Telefon: +49 5241 9899333
           </a>
           <a
-            href="mailto:kanzlei@frank-welsch-insolvenzverwalter.de"
+            href="mailto:kanzlei@frank-welsch.info"
             className="block hover:text-slate-900"
           >
-            E-Mail: kanzlei@frank-welsch-insolvenzverwalter.de
+            E-Mail: kanzlei@frank-welsch.info
           </a>
         </div>
         <div className="space-y-1">

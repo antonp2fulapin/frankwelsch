@@ -62,10 +62,10 @@ export function SiteFooter() {
               </li>
               <li>
                 <a
-                  href="mailto:kanzlei@frank-welsch-insolvenzverwalter.de"
+                  href="mailto:kanzlei@frank-welsch.info"
                   className="transition hover:text-slate-900"
                 >
-                  E-Mail: kanzlei@frank-welsch-insolvenzverwalter.de
+                  E-Mail: kanzlei@frank-welsch.info
                 </a>
               </li>
               <li>Barkeystraße 30, 33330 Gütersloh, Deutschland</li>
